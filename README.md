@@ -34,6 +34,21 @@ The parser follows these priority levels:
 - **Data Structure**: Binary Tree where leaf nodes are values and internal nodes are operators.
 - **Algorithm**: Recursive Descent Parsing (Top-Down).
 
+```bash
+INPUT: 
+	> 3 + 5 * 2 + (3 - 1)
+
+TOKENIZED: 
+	> [DIGIT] [PLUS] [DIGIT] [MULTIPLY] [DIGIT] [L_PARENTHESIS] [DIGIT] [MINUS] [DIGIT] [R_PARENTHESIS]
+AST:
+	> building...
+PARSED:
+	> to-do
+
+OUTPUT:
+	> Result: 15
+```
+
 ## Instructions
 ### Compiling
 ```bash
