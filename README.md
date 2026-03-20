@@ -1,6 +1,6 @@
 *This project has been created as a technical prototype for Minishell*
 
-# MathShell
+# Math shell
 A Recursive Descent Parser & AST Implementation
 
 ## Description
@@ -34,6 +34,7 @@ The parser follows these priority levels:
 - **Data Structure**: Binary Tree where leaf nodes are values and internal nodes are operators.
 - **Algorithm**: Recursive Descent Parsing (Top-Down).
 
+### Technical demonstration
 ```bash
 INPUT: 
 	> 3 + 5 * 2 + (3 - 1)
