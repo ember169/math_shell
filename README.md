@@ -34,21 +34,38 @@ The parser follows these priority levels:
 - **Data Structure**: Binary Tree where leaf nodes are values and internal nodes are operators.
 - **Algorithm**: Recursive Descent Parsing (Top-Down).
 
-### Technical demonstration
+#### Technical demonstration
+
+1. Raw input:
 ```bash
-INPUT: 
-	> 3 + 5 * 2 + (3 - 1)
-
-TOKENIZED: 
-	> [DIGIT] [PLUS] [DIGIT] [MULTIPLY] [DIGIT] [L_PARENTHESIS] [DIGIT] [MINUS] [DIGIT] [R_PARENTHESIS]
-AST:
-	> building...
-PARSED:
-	> to-do...
-
-OUTPUT:
-	> Result: 15
+3 + 5 * 2 + (3 - 1)
 ```
+
+2. Tokenized:
+```bash
+[DIGIT] [PLUS] [DIGIT] [MULTIPLY] [DIGIT] [L_PARENTHESIS] [DIGIT] [MINUS] [DIGIT] [R_PARENTHESIS]
+```
+
+3. Parsed representation (AST):
+```bash
+		  		    [ + ]
+		    	   /     \ 
+		          /       \ 
+      		 [ + ]         [ - ]
+		     /   \     	   /   \
+         [  3 ] [ * ]	[ 3 ] [ 1 ]
+               /   \
+            [ 5 ] [ 2 ]
+```
+
+4. Execution representation:
+<br>*Building...*
+
+5. Raw ouput:
+```bash
+Result: 15
+```
+
 
 ## Instructions
 ### Compiling
@@ -57,6 +74,6 @@ make
 ```
 ### Executing
 ```bash
-./math_shell "3 + 5 * 2"
-# Output: Result: 13
+./math_shell "3 + 5 * 2 + (3 - 1)"
+# Output: Result: 17
 ```
