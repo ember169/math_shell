@@ -11,7 +11,7 @@ enum e_type
 	TOK_PLEFT,
 	TOK_PRIGHT,
 	TOK_EOF,
-	TOK_ELSE
+	TOK_ERROR
 };
 
 typedef struct s_token

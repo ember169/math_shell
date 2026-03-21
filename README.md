@@ -44,7 +44,7 @@ TOKENIZED:
 AST:
 	> building...
 PARSED:
-	> to-do
+	> to-do...
 
 OUTPUT:
 	> Result: 15

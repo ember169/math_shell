@@ -1,3 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*  TOKENIZER / LEXER			                                              */
+/*                                                                            */
+/*  Uses a set of rules (LEXER) to transform characters into tokens.	      */
+/*                                                                            */
+/*  Input:                                                                    */
+/*  	char 	*string	 Pointer to the user input (av[1]) 	  				  */
+/*                                                                            */
+/*  Functions:                                                      		  */
+/*  	- tokenize		 Init list head, asks for tokens, init list tail	  */
+/*  	- craft_token	 Init and return single token, moves pointers	      */
+/*  	- lexer	 		 Return given char token type according to ruleset	  */
+/*                                                                            */
+/*  Note:																	  */
+/*  	Usage of pointer arithmetic in order to keep up with strtol			  */
+/*                                                                            */
+/*  Output:                                                                   */
+/*  	t_token *token		  Pointer toward the head of token list		 	  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/libs.h"
 
 enum e_type	lexer(char c)
@@ -19,7 +41,7 @@ enum e_type	lexer(char c)
 	else if (c == ')')
 		ret = TOK_PRIGHT;
 	else
-		ret = TOK_ELSE;
+		ret = TOK_ERROR;
 	return (ret);
 }
 
@@ -27,15 +49,13 @@ t_token	*craft_token(char **p)
 {
 	t_token		*tok;
 
-	while (**p && is_space(**p))
-		(*p)++;
-
 	tok = malloc(sizeof(t_token));
-	if (!tok)
+	if (!p || !tok)
 		return (tok);
 
 	tok->type = lexer(**p);
 	printf("DEBUG: '%c' type = %u\n", **p, tok->type);
+	tok->next = NULL;
 
 	if (tok->type == TOK_INT)
 		tok->value = strtol(*p, p, 10);
@@ -47,22 +67,30 @@ t_token	*craft_token(char **p)
 	return (tok);
 }
 
-t_token	*tokenize(char *av, t_token *tokens)
+t_token	*tokenize(char *string)
 {
+	t_token	head;
 	t_token	*current;
 	char	*p;
 
-	current = tokens;
-	p = av;
-	while (*p != '\0')
+	head.next = NULL;
+	current = &head;
+	p = string;
+	while (*p)
 	{
+		while (*p && is_space(*p))
+			p++;
 		if (*p == '\0')
-			current->type = TOK_EOF;
-		else
-		{
-			current->next = craft_token(&p);
-			current = current->next;
-		}
+			break ;
+		current->next = craft_token(&p);
+		current = current->next;
 	}
-	return (tokens);
+
+	current->next = malloc(sizeof(t_token));
+	if (!current->next)
+		return (current->next);
+	current->next->type = TOK_EOF;
+	current->next->next = NULL;
+
+	return (head.next);
 }

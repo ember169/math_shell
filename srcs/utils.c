@@ -34,17 +34,33 @@ char	*get_token_name(enum e_type type)
 		return ("TOK_PRIGHT");
 	if (type == TOK_EOF)
 		return ("TOK_EOF");
-	if (type == TOK_ELSE)
-		return ("TOK_ELSE");
+	if (type == TOK_ERROR)
+		return ("TOK_ERROR");
 	return ("UNKNOWN");
+}
+
+int	token_nb(t_token *tokens)
+{
+	int	i;
+
+	i = 0;
+	if (tokens)
+	{
+		while (tokens->next)
+		{
+			i++;
+			tokens = tokens->next;
+		}
+	}
+	return (i);
 }
 
 void	print_tokens(t_token *tokens)
 {
 	t_token	*current;
 
-	current = tokens->next;
-	while (1)
+	current = tokens;
+	while (current->type != TOK_EOF)
 	{
 		printf("[%s]", get_token_name(current->type));
 		if (current->next)
