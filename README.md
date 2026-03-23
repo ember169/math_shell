@@ -28,7 +28,7 @@ The parser follows these priority levels:
 3. `parse_factor`: Handles raw numbers and `(expressions)`.
 
 #### Allowed external functions:
-> `printf`, `malloc`, `realloc`, `free`, `write`, `exit`, `strtol`, `isdigit`.
+> `printf`, `malloc`, `realloc`, `free`, `write`, `exit`, `strtol`.
 
 ### Implementation
 - **Data Structure**: Binary Tree where leaf nodes are values and internal nodes are operators.
@@ -74,6 +74,12 @@ make
 ```
 ### Executing
 ```bash
-./math_shell "3 + 5 * 2 + (3 - 1)"
+./math_shell [-v] "3 + 5 * 2 + (3 - 1)"
 # Output: Result: 17
 ```
+Optional arguments:
+- `-v`: prints intermediate steps
+
+## Resources
+- [Graph theory, Youtube](https://www.youtube.com/watch?v=8FUfBdrczNA&list=WL&index=3)
+- [Graph Theory: A Computer Science Perspective](https://www.youtube.com/watch?v=LFKZLXVO-Dg&list=WL&index=4)

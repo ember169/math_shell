@@ -24,8 +24,8 @@ typedef struct s_token
 typedef struct s_node
 {
 	t_token			*token;
-	struct s_node	*prev;
-	struct s_node	*next;
+	struct s_node	*left;
+	struct s_node	*right;
 }	t_node;
 
 #endif

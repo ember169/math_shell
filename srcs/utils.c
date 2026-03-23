@@ -84,3 +84,42 @@ int	is_digit(char c)
 	return (c >= '0' && c <= '9');
 }
 
+t_node *create_node(t_token *token)
+{
+	t_node	*node;
+
+	node = malloc(sizeof(t_node));
+	if (!node)
+		return (node);
+	node->token = token;
+	node->left = NULL;
+	node->right = NULL;
+	return (node);
+}
+
+void	print_ast(t_node *node, int depth)
+{
+	int			i;
+
+	if (!node)
+		return ;
+	i = 0;
+	while (i < depth)
+	{
+		printf("	");
+		i++;
+	}
+	if (node->token->type == TOK_ADD)
+		printf("[+]\n");
+	else if (node->token->type == TOK_SUB)
+		printf("[-]\n");
+	else if (node->token->type == TOK_MUL)
+		printf("[*]\n");
+	else if (node->token->type == TOK_DIV)
+		printf("[/]\n");
+	else
+		printf("[%ld]\n", node->token->value);
+	print_ast(node->left, depth + 1);
+	print_ast(node->right, depth + 1);
+	return ;
+}

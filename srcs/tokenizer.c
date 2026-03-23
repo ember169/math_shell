@@ -54,7 +54,7 @@ t_token	*craft_token(char **p)
 		return (tok);
 
 	tok->type = lexer(**p);
-	printf("DEBUG: '%c' type = %u\n", **p, tok->type);
+	// printf("DEBUG: '%c' type = %u\n", **p, tok->type);
 	tok->next = NULL;
 
 	if (tok->type == TOK_INT)
