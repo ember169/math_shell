@@ -85,9 +85,9 @@ make
 ### Executing
 ```bash
 ./math_shell "3 + 5 * 2 + (3 - 1)"
-# Output: Result: 17
+# Output: Result: 15
 ```
-**N.B: This proof of concept does not support negative numbers and more complex operations.**
+*N.B: This proof of concept does **not** support negative numbers and more complex operations.*
 
 
 ## Resources
