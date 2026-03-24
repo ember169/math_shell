@@ -47,6 +47,7 @@ The parser follows these priority levels:
 ```
 
 3. Parsed representation (AST):
+As a graphical tree:
 ```bash
 		  		    [ + ]
 		    	   /     \ 
@@ -56,6 +57,18 @@ The parser follows these priority levels:
          [  3 ] [ * ]	[ 3 ] [ 1 ]
                /   \
             [ 5 ] [ 2 ]
+```
+As a pre-order tree:
+```bash
+[+]
+        [+]
+                [3]
+                [*]
+                        [5]
+                        [2]
+        [-]
+                [3]
+                [1]
 ```
 
 4. Execution representation:

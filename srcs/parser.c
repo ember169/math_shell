@@ -24,7 +24,8 @@
 
 /*
 ** parse_factor:
-**     Handles INT and (EXPR).
+**     Handles INT. If '(' or ')' consumes token and sends it back to 
+**	   parse_expression.
 **
 **     @param *token  Pointer to currently processed token.
 **     @return *node  Pointer to made node.
@@ -34,10 +35,13 @@ t_node	*parse_factor(t_token **token)
 	t_node	*node;
 
 	node = NULL;
-	if ((*token)->type == TOK_INT
-		|| (*token)->type == TOK_PLEFT
-		|| (*token)->type == TOK_PRIGHT)
+	if ((*token)->type == TOK_INT)
 		node = create_node(*token);
+	else if ((*token)->type == TOK_PLEFT || (*token)->type == TOK_PRIGHT)
+	{
+		*token = (*token)->next;
+		node = parse_expression(token);
+	}
 	*token = (*token)->next;
 	return (node);
 }
