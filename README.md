@@ -13,7 +13,6 @@ This project is a simplified mathematical interpreter designed to master the cor
 - **Precedence**: Correctly handle PEMDAS (Multiplication/Division before Addition/Subtraction).
 - **Parentheses**: Support nested priority levels using recursive calls.
 - **Error Handling**: 
-  - `Syntax Error`: For invalid sequences like `5 ++ 2` or `(3 + 1`.
   - `Division by Zero`: Handle runtime arithmetic errors.
 
 #### Features
@@ -47,6 +46,7 @@ The parser follows these priority levels:
 ```
 
 3. Parsed representation (AST):
+
 As a graphical tree:
 ```bash
 		  		    [ + ]
@@ -71,10 +71,7 @@ As a pre-order tree:
                 [1]
 ```
 
-4. Execution representation:
-<br>*Building...*
-
-5. Raw ouput:
+4. Raw ouput:
 ```bash
 Result: 15
 ```
@@ -87,11 +84,11 @@ make
 ```
 ### Executing
 ```bash
-./math_shell [-v] "3 + 5 * 2 + (3 - 1)"
+./math_shell "3 + 5 * 2 + (3 - 1)"
 # Output: Result: 17
 ```
-Optional arguments:
-- `-v`: prints intermediate steps
+**N.B: This proof of concept does not support negative numbers and more complex operations.**
+
 
 ## Resources
 - [Graph theory, Youtube](https://www.youtube.com/watch?v=8FUfBdrczNA&list=WL&index=3)

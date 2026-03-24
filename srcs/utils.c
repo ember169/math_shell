@@ -131,3 +131,12 @@ void	print_ast(t_node *node, int depth)
 	print_ast(node->right, depth + 1);
 	return ;
 }
+
+void	free_ast(t_node *arg)
+{
+	if (!arg)
+		return ;
+	free_ast(arg->left);
+	free_ast(arg->right);
+	free(arg);
+}
